@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     
+    
     //@State 값의 변화를 감지 -> 뷰에 적용
     @State
     private var isActivated: Bool = false
@@ -19,9 +20,9 @@ struct ContentView: View {
         NavigationView{
             VStack{
                 HStack{
-                    MyVstackView()
-                    MyVstackView()
-                    MyVstackView()
+                    MyVstackView(isActivated: $isActivated)
+                    MyVstackView(isActivated: $isActivated)
+                    MyVstackView(isActivated: $isActivated)
                 }
                 .padding(isActivated ? 50.0 : 10.0)
                     //왼쪽:leading, 오른쪽:trailing
@@ -37,7 +38,7 @@ struct ContentView: View {
                 }//HStack
             
                 //네비게이션 버튼(링크)
-                NavigationLink(destination: MyTextView()){
+                NavigationLink(destination: MyTextView(isActivated: $isActivated)){
                     Text("네비게이션")
                         .fontWeight(.heavy)
                         .font(.system(size: 40))
